@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31e52fa11dad54e9d8383ba6e652fd96, type: 3}
+  m_Name: GeneralJengaConfig
+  m_EditorClassIdentifier: 
+  jengaConfigs:
+  - {fileID: 11400000, guid: acb498e7d922d46ebb7da949c2eda4f2, type: 2}
+  - {fileID: 11400000, guid: 5de5b581630dd4d749ad7754a5c232ce, type: 2}
+  - {fileID: 11400000, guid: b38ea9ac038064c01bb50374f7996894, type: 2}
+  stackSpacing: 10
+  stackPrefab: {fileID: 8687119381162407947, guid: d00d2904f72b14c1d8483b3c4397b795,
+    type: 3}
