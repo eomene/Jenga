@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   potentialBlockData:
   - blockLevel: 0
-    alias: Glass
+    alias: 
     blockTexture: {fileID: 0}
     color: {r: 1, g: 1, b: 1, a: 1}
   - blockLevel: 1
-    alias: Wood
+    alias: Learned
     blockTexture: {fileID: 0}
     color: {r: 0.8962264, g: 0.7135679, b: 0.08877714, a: 1}
   - blockLevel: 2
-    alias: Stone
+    alias: Mastered
     blockTexture: {fileID: 0}
     color: {r: 0.6415094, g: 0.6415094, b: 0.6415094, a: 1}

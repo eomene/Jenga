@@ -10,6 +10,8 @@ namespace Logic
         [SerializeField] private GeneralJengaConfig jengaConfig;
         [SerializeField] private OrbitCamera orbitCamera;
         [SerializeField] private BlockDetailsUI blockDetailsUI;
+        List<JengaStack> stacks = new List<JengaStack>();
+
         
         void Awake()
         {
@@ -19,14 +21,13 @@ namespace Logic
         private async UniTask CreateMultipleStacks()
         {
             JengaCreator jengaCreator = new JengaCreator();
-            List<Transform> stacks = new List<Transform>();
             for (int stackIndex = 0; stackIndex < jengaConfig.jengaConfigs.Length; stackIndex++)
             {
                 var config = jengaConfig.jengaConfigs[stackIndex];
                 await config.GetConfig();
                 float stackOffsetX = stackIndex * jengaConfig.stackSpacing;
                 var jenga = jengaCreator.CreateStack(config, this,stackOffsetX,jengaConfig.stackPrefab);
-                stacks.Add(jenga.transform);
+                stacks.Add(jenga);
             }
 
             orbitCamera.Init(stacks);
@@ -35,6 +36,14 @@ namespace Logic
         public void ShowDetails(string selected)
         {
             blockDetailsUI.Show(selected);
+        }
+
+        public void ActivateAction(int mode)
+        {
+            for (int i = 0; i < stacks.Count; i++)
+            {
+                stacks[i].ActivateMode(mode);
+            }
         }
     }
 }

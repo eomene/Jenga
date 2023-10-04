@@ -1,6 +1,7 @@
 using System;
 using Data;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
 
 namespace Logic
@@ -9,7 +10,8 @@ namespace Logic
     {
         [SerializeField] private MeshRenderer renderer;
         [SerializeField] private BlockVisualData blockVisualData;
-        [SerializeField] private Block block;
+        [SerializeField] public Block block { get; private set; }
+
         [FormerlySerializedAs("jengaBlockUI")] [SerializeField] private JengaUI jengaUI;
         private JengaManager jengaManager;
 
@@ -31,6 +33,10 @@ namespace Logic
 
         public void OnMouseDown()
         {
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                return;
+            }
             string data = $"{block.grade}: {block.domain}\n[{block.cluster}]\n{block.standardid}: {block.standarddescription}";
             if (jengaManager)
                 jengaManager.ShowDetails(data);

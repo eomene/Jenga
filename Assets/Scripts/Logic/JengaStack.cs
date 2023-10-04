@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Data;
 using UnityEngine;
 
@@ -5,11 +6,37 @@ namespace Logic
 {
     public class JengaStack : MonoBehaviour
     {
-        [SerializeField]private JengaUI jengaUI;
+        [SerializeField] private JengaUI jengaUI;
+        private Dictionary<int, List<JengaBlock>> blockCategories = new Dictionary<int, List<JengaBlock>>();
+
+        public void UpdateStack(JengaBlock block)
+        {
+            int masteryKey = block.block.mastery;
+            if (blockCategories.ContainsKey(masteryKey))
+            {
+                blockCategories[masteryKey].Add(block);
+            }
+            else
+            {
+                blockCategories[masteryKey] = new List<JengaBlock> { block };
+            }
+        }
 
         public void UpdateUI(string text)
         {
             jengaUI.UpdateText(text);
+        }
+
+        public void ActivateMode(int mode)
+        {
+            if (!blockCategories.ContainsKey(mode))
+                return;
+            
+            var blocks = blockCategories[mode];
+            for (int i = 0; i < blocks.Count; i++)
+            {
+                Destroy(blocks[i].gameObject);
+            }
         }
     }
 
@@ -37,6 +64,7 @@ namespace Logic
                     var block = GameObject.Instantiate(jengaConfig.blockPrefab, position + offset, rotation);
                     var jengaBlock = block.GetComponent<JengaBlock>();
                     jengaBlock.Init(jengaConfig.Blocks[blockDataUsage], jengaManager);
+                    stack.UpdateStack(jengaBlock);
                     block.transform.SetParent(stack.transform);
                     blockDataUsage++;
                 }
