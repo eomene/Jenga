@@ -33,10 +33,6 @@ namespace Logic
 
         public void OnMouseDown()
         {
-            if (EventSystem.current.IsPointerOverGameObject())
-            {
-                return;
-            }
             string data = $"{block.grade}: {block.domain}\n[{block.cluster}]\n{block.standardid}: {block.standarddescription}";
             if (jengaManager)
                 jengaManager.ShowDetails(data);

@@ -130,17 +130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   renderer: {fileID: 956302481094476844}
   blockVisualData: {fileID: 11400000, guid: e9f07007bdb78489c8e9cc58d2918dbb, type: 2}
-  block:
-    id: 0
-    subject: 
-    grade: 
-    mastery: 0
-    domainid: 
-    domain: 
-    cluster: 
-    standardid: 
-    standarddescription: 
-  jengaBlockUI: {fileID: 4783657740514272385}
+  jengaUI: {fileID: 4783657740514272385}
 --- !u!1 &3693764387023757189
 GameObject:
   m_ObjectHideFlags: 0

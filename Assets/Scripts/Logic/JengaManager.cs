@@ -2,13 +2,14 @@ using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using Data;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Logic
 {
     public class JengaManager : MonoBehaviour
     {
         [SerializeField] private GeneralJengaConfig jengaConfig;
-        [SerializeField] private OrbitCamera orbitCamera;
+        [FormerlySerializedAs("orbitCamera")] [SerializeField] private OrbitCameraManager orbitCameraManager;
         [SerializeField] private BlockDetailsUI blockDetailsUI;
         List<JengaStack> stacks = new List<JengaStack>();
 
@@ -30,7 +31,7 @@ namespace Logic
                 stacks.Add(jenga);
             }
 
-            orbitCamera.Init(stacks);
+            orbitCameraManager.Init(stacks).Forget();
         }
 
         public void ShowDetails(string selected)
