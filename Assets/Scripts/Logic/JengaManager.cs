@@ -9,7 +9,7 @@ namespace Logic
     public class JengaManager : MonoBehaviour
     {
         [SerializeField] private GeneralJengaConfig jengaConfig;
-        [FormerlySerializedAs("orbitCamera")] [SerializeField] private OrbitCameraManager orbitCameraManager;
+        [SerializeField] private OrbitCameraManager orbitCameraManager;
         [SerializeField] private BlockDetailsUI blockDetailsUI;
         List<JengaStack> stacks = new List<JengaStack>();
 

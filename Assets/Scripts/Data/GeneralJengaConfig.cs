@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -29,6 +30,15 @@ namespace Data
     public class JengaBlocks
     {
         public List<Block> Blocks;
+        public List<Block> OrderedBlocks()
+        {
+           var  ordered = this.Blocks
+                .OrderBy(b => b.domain)
+                .ThenBy(b => b.cluster)
+                .ThenBy(b => b.standardid)
+                .ToList();
+           return ordered;
+        }
     }
 
 }

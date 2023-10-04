@@ -40,7 +40,7 @@ namespace Data
             var fixJson = "{\n    \"Blocks\":" + json + "}";
             var fixedResults = JsonUtility.FromJson<JengaBlocks>(fixJson);
 
-            return fixedResults.Blocks.Where(x => x.grade == levelTag).ToArray();
+            return fixedResults.OrderedBlocks().Where(x => x.grade == levelTag).ToArray();
         }
     }
 }
